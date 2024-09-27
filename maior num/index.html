@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maior de 3</title>
+</head>
+<body>
+  <div style="text-align: center; border: 1px solid black;">
+    <h1>Maior de 3</h1>
+    <p>Digite os números para saber qual é o maior!</p>
+    <br>
+    Primeiro número: <input type="number" name="num1" id="num1"><br>
+    <br>
+    Segundo número: <input type="number" name="num2" id="num2"><br>
+    <br>
+    Terceiro número: <input type="number" name="num3" id="num3"><br>
+    <br>
+    <button onclick="calcular()">Calcular</button>
+
+
+    <script>
+      function calcular(){
+        let num1 = Number(document.querySelector('input#num1').value)
+        let num2 = Number(document.querySelector('input#num2').value)
+        let num3 = Number(document.querySelector('input#num3').value)
+
+        if (num1 > num2 && num1 > num3){
+          alert('O maior número é num 1 ')
+        } else if (num2 > num1 && num2 > num3){
+          alert('O maior numero é o num 2 ')
+        } else {
+          alert('O maior numero e o num 3 ')
+        }
+      }
+    </script>
+  </div>
+</body>
+</html>
