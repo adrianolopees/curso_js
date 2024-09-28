@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organizações Tabajara</title>
+    <style>
+      body {
+        text-align: center;
+        border: 0.2rem solid black;
+        padding: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>As Organizações Tabajara</h1>
+    <h4>Aumento de salário.</h4>
+    <p>Digite abaixo o seu salário.</p>
+
+    Salário: <input type="number" name="salario" id="salario" />
+    <button onclick="ajustar()">Calcular</button>
+
+    <div id="res"></div>
+
+    <script>
+      function ajustar() {
+        var aumento = document.getElementById("res")
+        var salario = Number(document.querySelector("input#salario").value);
+        if (salario <= 280) {
+          salario = salario / 5;
+          res.innerHTML = ` O seu salário era ${salario} agora é ${aumento}`
+        }
+      }
+    </script>
+  </body>
+</html>
