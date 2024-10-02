@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treinando JavaScript</title>
+</head>
+<body>
+  <h1>Digita dois Números para efetuar os calculos.</h1>
+  Primero Número: <input type="number" id="num1">
+  Segundo Número: <input type="number" id="num2">
+  <button onclick="calcular()">Calcular</button>
+
+  <div id="res">
+<br><br><br>
+Aqui vai o resultado
+  </div>
+
+  <script>
+    function calcular(){
+      let num1 = Number(document.getElementById('num1').value)
+      let num2 = Number(document.getElementById('num2').value)
+      let res = document.getElementById('res')
+
+      res.innerText = `A soma é ${num1 + num2} \n A divisão é ${num1 / num2}\n A multiplicação é ${num1 * num2}\n A subtração é ${num1 - num2}`
+      
+      
+      
+    }
+  </script>
+</body>
+</html>
