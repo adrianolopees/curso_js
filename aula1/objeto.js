@@ -12,12 +12,18 @@ console.log(pessoa1, pessoa2, pessoa3, pessoa4, pessoa5, pessoa6);
  */
 
 const pessoa1 = {
-  nome: 'Adriano',
-  sobrenome:'Lopes',
-  idade:25,
+  nome: "Adriano",
+  sobrenome: "Lopes",
+  idade: 25,
 
   fala() {
-    console.log('ola mundo')
-  }
-}
-pessoa1.fala()
+    console.log(` A minha idade é ${this.idade}.`);
+  },
+
+  incrementoIdade() {
+    this.idade++;
+  },
+};
+pessoa1.fala();
+pessoa1.incrementoIdade();
+pessoa1.fala();
