@@ -2,8 +2,8 @@ function meuEscopo() {
   const form = document.querySelector(".form");
   const resultado = document.querySelector(".resultado");
   const pessoas = [];
-  function recebeEventoForm(evento) {
-    evento.preventDefault();
+  function doCaralho(porra) {
+    porra.preventDefault();
 
     const nome = form.querySelector(".nome");
     const sobrenome = form.querySelector(".sobrenome");
@@ -23,6 +23,6 @@ function meuEscopo() {
 
   }
 
-  form.addEventListener("submit", recebeEventoForm);
+  form.addEventListener("submit", doCaralho);
 }
 meuEscopo();
