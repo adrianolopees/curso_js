@@ -48,3 +48,8 @@ button:hover{
   max-width: 640px;
   margin: 0 auto;
 }
+
+.resultado-valido {
+  background-color: rgba(0, 128, 0, 0.568);
+  padding: 10px 20px;
+}
