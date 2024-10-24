@@ -12,16 +12,29 @@ formulario.addEventListener("submit", function (event) {
   const altura = Number(inputAltura.value);
   //Peguei os valores e transformei em number's
 
- 
+  if (!peso) {
+    setResultado("Peso inválido!", false);
+    return;
+    //! Inverte o que for preenchido , no caso se NÃO for um Número!
+  }
+  if (!altura) {
+    setResultado("Altura inválida!", false);
+    return;
+    // Dentro ainda passamos outro parametro para poder criar uma classe para quando for inválido ou válido.
+  }
+
+  console.log('cheguei aqui')
 });
 
 function criaP() {
   const p = document.createElement("p");
-  p.classList.add("resultado-valido");
-  p.innerHTML = "Porra";
+  return p;
 }
-function setResultado(msg) {
+
+function setResultado(msg, isValid) {
   const resultado = document.querySelector("#resultado");
   resultado.innerHTML = "";
-  resultado.appendChild(p);
+  const p = criaP();
+  p.innerHTML = msg;
+  resultado.appendChild(p)
 }
