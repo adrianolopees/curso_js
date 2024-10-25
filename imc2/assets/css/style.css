@@ -49,7 +49,18 @@ button:hover{
   margin: 0 auto;
 }
 
-.resultado-valido {
-  background-color: rgba(0, 128, 0, 0.568);
+.value_valido {
+  text-align: center;
+  background-color: rgba(0, 128, 0, 0.555);
   padding: 10px 20px;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.value_invalido {
+  text-align: center;
+  background-color: rgba(209, 53, 6, 0.808);
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 1.3rem;
 }
