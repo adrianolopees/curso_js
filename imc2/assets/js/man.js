@@ -51,6 +51,7 @@ function getNivelImc(imc) {
 function getImc(peso, altura) {
   const imc = peso / altura ** 2;
   return imc.toFixed(2);
+  //fazer o calculo do imc                                                                                                                                                                              
 }
 
 function criaP() {
