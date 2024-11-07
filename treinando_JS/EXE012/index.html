@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Números</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 1rem;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            text-align: center;
+            color: #333;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mostrar Dados</h1>
+        
+        <div class="input-group">
+            <label for="nome">Primeiro Nome:</label>
+            <input type="text" id="nome" placeholder="Digite o primeiro Nome">
+        </div>
+
+        <div class="input-group">
+            <label for="sobrenome">Segundo Nome:</label>
+            <input type="text" id="sobrenome" placeholder="Digite o sobrenome">
+        </div>
+
+        <div class="input-group">
+            <label for="idade">Idade:</label>
+            <input type="text" id="idade" placeholder="Digite idade">
+        </div>
+        <div class="input-group">
+            <label for="altura">Altura:</label>
+            <input type="text" id="altura" placeholder="Digite a Altura">
+        </div>
+        <div class="input-group">
+            <label for="estudante">Você estuda:</label>
+            <input type="text" id="estudante" placeholder="Digite sim / não">
+        </div>
+
+        <button type="button" onclick="mostrar()">Mostrar</button>
+        
+        <div class="result" id="resultado">
+            O resultado aparecerá aqui
+        </div>
+        <button type="reset" onclick="reset()">Limpar</button>
+    </div>
+
+    <script>
+        function mostrar() {
+            const nome = document.getElementById('nome').value
+            const sobrenome = document.getElementById('sobrenome').value
+            const idade = document.getElementById('idade').value
+            const altura = document.getElementById('altura').value
+            const estudante = document.getElementById('estudante').value
+
+            const resultado = document.querySelector('#resultado')
+            const pessoa = {
+                nome:nome,
+                sobrenome:sobrenome,
+                idade:idade,
+                altura:altura,
+                estudante:estudante
+            }
+        
+             resultado.innerHTML = 
+             `Nome: ${pessoa.nome}<br>
+             Sobrenome: ${pessoa.sobrenome}<br>
+             Idade: ${pessoa.idade}<br>
+             Altura: ${pessoa.altura}<br>
+             Estuda: ${pessoa.estudante}<br>`
+    
+            
+        }
+
+        function reset(){
+            resultado.innerHTML = ''
+            const inputs = document.querySelectorAll('input')
+            inputs.forEach(input => {
+                input.value = ''
+            })
+        }
+    </script>
+</body>
+</html>
