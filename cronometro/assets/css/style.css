@@ -6,14 +6,15 @@
 }
 
 body {
-  background-color: #dab0b0;
-  margin-top: 20rem;
+  background-color: #241f1f;
+  margin-top:6rem;
   font: 1em  arial;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 1rem;
+  font-size: 3.5rem;
 }
 p {
   text-align: center;
@@ -32,27 +33,41 @@ form input, form label, form button {
   outline: none;
 }
 
-form input:focus {
-  outline: 2px solid #dab0b0;
-}
 
 button {
-  background-color: #dab0b0;
+  background-color: #b1adad;
+  padding:8px;
+  border-radius: 4px;
+  width: 7rem;
   border:none;
-  height: 50px;
   margin-top:20px;
   font-size: 1rem;
-  font-weight: 600;
 }
 
 button:hover{
   background-color: #dab0b063;
   cursor: pointer;
 }
+
+.btn{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.timer{
+  font-size: 4rem;
+}
+
 .container {
   border-radius: 1rem;
   padding: 2rem;
   background-color: #fff;
   max-width: 640px;
   margin: 0 auto;
+}
+.stop-red{
+  color:red
+}
+.start-black{
+  color: black;
 }
