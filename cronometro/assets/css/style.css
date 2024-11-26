@@ -35,13 +35,13 @@ form input, form label, form button {
 
 
 button {
-  background-color: #b1adad;
+  font-size: 1rem;
   padding:8px;
-  border-radius: 4px;
+  margin:5px;
+  background-color: #007BFF;
+  border-radius: 5px;
   width: 7rem;
   border:none;
-  margin-top:20px;
-  font-size: 1rem;
 }
 
 button:hover{
@@ -56,6 +56,13 @@ button:hover{
 }
 .timer{
   font-size: 4rem;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding:10px;
+  border-radius: 5px;
+  width: 20rem;
+  margin:20px auto;
 }
 
 .container {
@@ -68,6 +75,17 @@ button:hover{
 .stop-red{
   color:red
 }
+
 .start-black{
   color: black;
 }
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+button.stop-red {
+  background-color: #FF4136;
+}
+
+

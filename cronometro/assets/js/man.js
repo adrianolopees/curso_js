@@ -7,7 +7,7 @@ function getTimeFromSecond(segundos) {
 }
 
 const start = document.querySelector(".start");
-const stop = document.querySelector(".stop");
+const stop = document.querySelector(".stop")
 const reset = document.querySelector(".reset");
 const cronometro = document.querySelector(".timer");
 
@@ -21,6 +21,17 @@ function startTimer() {
   }, 1000);
 }
 
+function salvarTempo(){
+  localStorage.setItem('segundos',segundos);
+}
+
+function carregarTempo(){
+  const tempoSalvo = localStorage.getItem('segundos');
+  if(tempoSalvo){
+    segundos = parseInt(tempoSalvo, 10);
+    cronometro.innerHTML = getTimeFromSecond(segundos);
+  }
+}
 
 document.addEventListener('click', (elemento) =>{
  const elementoClicado = elemento.target;
@@ -45,5 +56,9 @@ document.addEventListener('click', (elemento) =>{
     segundos = 0
     cronometro.classList.remove('stop-red')
     start.disabled = false;
+   
+    
   }
 })
+
+
