@@ -1,0 +1,38 @@
+
+.container{
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+.calendar th, td{
+  border: solid 1px black;
+  width:40px;
+  height: 30px;
+}
+
+.calendar{
+  text-align:center;
+}
+
+.inputs{
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  gap: 2rem;
+}
+input {
+  padding:0 20px;
+  font-size: 1.5rem;
+  
+}
+h1{
+  text-align: center;
+}
+
+.data-selecionada {
+  background-color: orange; /* Cor laranja para as datas selecionadas */
+}
+
+.data-intervalo {
+  background-color: blue; /* Cor azul para o intervalo */
+}
