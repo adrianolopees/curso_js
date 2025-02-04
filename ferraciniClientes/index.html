@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Clientes</title>
+</head>
+<body>
+    <form id="clientForm">
+        <input type="text" id="clientName" required placeholder="Nome do Cliente">
+        <input type="tel" id="clientPhone" required placeholder="Telefone">
+        <input type="text" id="shoeName" required placeholder="Nome do Calçado">
+        <input type="text" id="shoeReference" required placeholder="Referência">
+        <select id="shoeSize" required>
+            <option value="">Selecione o Tamanho</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <!-- outros tamanhos -->
+        </select>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <input type="text" id="searchInput" placeholder="Buscar">
+    <button id="searchButton">Buscar</button>
+
+    <div id="clientList"></div>
+
+    <script>
+        class ClientManager {
+            constructor() {
+                this.clients = [];
+                this.form = document.getElementById('clientForm');
+                this.clientList = document.getElementById('clientList');
+                this.searchInput = document.getElementById('searchInput');
+                this.searchButton = document.getElementById('searchButton');
+                
+                this.initEvents();
+            }
+
+            initEvents() {
+                this.form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.addClient();
+                });
+
+                this.searchButton.addEventListener('click', () => {
+                    this.searchClients();
+                });
+            }
+
+            addClient() {
+                const client = {
+                    name: document.getElementById('clientName').value,
+                    phone: document.getElementById('clientPhone').value,
+                    shoeName: document.getElementById('shoeName').value,
+                    shoeReference: document.getElementById('shoeReference').value,
+                    shoeSize: document.getElementById('shoeSize').value
+                };
+
+                this.clients.push(client);
+                this.displayClients();
+                this.form.reset();
+            }
+
+            displayClients(clientsToShow = this.clients) {
+                this.clientList.innerHTML = '';
+                clientsToShow.forEach(client => {
+                    const div = document.createElement('div');
+                    div.textContent = `${client.name} - ${client.shoeName} - ${client.shoeReference}`;
+                    this.clientList.appendChild(div);
+                });
+            }
+
+            searchClients() {
+                const searchTerm = this.searchInput.value.toLowerCase();
+                const filteredClients = this.clients.filter(client => 
+                    client.name.toLowerCase().includes(searchTerm) || 
+                    client.shoeReference.toLowerCase().includes(searchTerm)
+                );
+                this.displayClients(filteredClients);
+            }
+        }
+
+        // Inicializa após o carregamento do DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            new ClientManager();
+        });
+    </script>
+</body>
+</html>

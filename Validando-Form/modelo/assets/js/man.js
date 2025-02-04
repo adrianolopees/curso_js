@@ -12,6 +12,7 @@ class ValidationForm {
 
   handleSubmit(e) {
     e.preventDefault();
+
     const validFields = this.fieldAreValid();
     const validPassword = this.areValidPasswords();
 
@@ -50,7 +51,7 @@ class ValidationForm {
 
     for (let errorText of this.form.querySelectorAll(".error-text")) {
       errorText.remove();
-    }
+    }//
 
     for (let field of this.form.querySelectorAll(".validate")) {
       const label = field.previousElementSibling.innerText;
