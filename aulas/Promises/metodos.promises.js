@@ -17,15 +17,23 @@ function esperaUmPouco(msg, tempo) {
 }
 
 const promises = [
-  'Primeiro valor',
+  //'Primeiro valor',
   esperaUmPouco('Promessa 1', 2000),
   esperaUmPouco('Promessa 2', 3000),
   esperaUmPouco('Promessa 3', 1000),
   //esperaUmPouco(1234, 1000),
-  'Ultimo valor ja resolvido.'
+ // 'Ultimo valor ja resolvido.'
 ];
 
-Promise.all(promises)
+/* Promise.all(promises)
+  .then(valor => {
+    console.log(valor)
+  })
+  .catch(e => {
+    console.log(e)
+  }) */
+
+Promise.race(promises)
   .then(valor => {
     console.log(valor)
   })
