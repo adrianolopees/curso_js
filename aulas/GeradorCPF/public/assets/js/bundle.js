@@ -514,24 +514,113 @@ module.exports = content.locals || {};
 
 /***/ }),
 
-/***/ "./src/modulo1.js":
-/*!************************!*\
-  !*** ./src/modulo1.js ***!
-  \************************/
+/***/ "./src/modules/GeraCPF.js":
+/*!********************************!*\
+  !*** ./src/modules/GeraCPF.js ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ nome),
-/* harmony export */   sobrenome: () => (/* binding */ sobrenome),
-/* harmony export */   soma: () => (/* binding */ soma)
+/* harmony export */   "default": () => (/* binding */ GeraCPF)
 /* harmony export */ });
-var nome = "Adriano";
-var sobrenome = "Lopes";
-function soma(x, y) {
-  return x + y;
-}
+/* harmony import */ var _ValidaCPF__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ValidaCPF */ "./src/modules/ValidaCPF.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var GeraCPF = /*#__PURE__*/function () {
+  function GeraCPF() {
+    _classCallCheck(this, GeraCPF);
+  }
+  _createClass(GeraCPF, [{
+    key: "rand",
+    value: function rand() {
+      var min = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100000000;
+      var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 999999999;
+      return String(Math.floor(Math.random() * (max - min) + min));
+    }
+  }, {
+    key: "formatar",
+    value: function formatar(cpf) {
+      return cpf.slice(0, 3) + '.' + cpf.slice(3, 6) + '.' + cpf.slice(6, 9) + '-' + cpf.slice(9, 11);
+    }
+  }, {
+    key: "geraNovoCpf",
+    value: function geraNovoCpf() {
+      var cpfSemdigito = this.rand();
+      var digito1 = _ValidaCPF__WEBPACK_IMPORTED_MODULE_0__["default"].criaDigito(cpfSemdigito);
+      var digito2 = _ValidaCPF__WEBPACK_IMPORTED_MODULE_0__["default"].criaDigito(cpfSemdigito + digito1);
+      var cpfGerado = cpfSemdigito + digito1 + digito2;
+      return this.formatar(cpfGerado);
+    }
+  }]);
+  return GeraCPF;
+}();
+
+
+/***/ }),
+
+/***/ "./src/modules/ValidaCPF.js":
+/*!**********************************!*\
+  !*** ./src/modules/ValidaCPF.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ValidaCPF)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+var ValidaCPF = /*#__PURE__*/function () {
+  function ValidaCPF(cfpEnviado) {
+    _classCallCheck(this, ValidaCPF);
+    Object.defineProperty(this, "cpfLimpo", {
+      enumerable: true,
+      get: function get() {
+        return cfpEnviado.replace(/\D+/g, "");
+      }
+    });
+  }
+  _createClass(ValidaCPF, [{
+    key: "valida",
+    value: function valida() {
+      if (!this.cpfLimpo) return false;
+      if (typeof this.cpfLimpo !== 'string') return false;
+      if (this.cpfLimpo.length !== 11) return false;
+      if (this.isSequencia()) return false;
+      var cpfParcial = this.cpfLimpo.slice(0, -2);
+      var digito1 = this.criaDigito(cpfParcial);
+      var digito2 = this.criaDigito(cpfParcial + digito1);
+      var novoCpf = cpfParcial + digito1 + digito2;
+      return novoCpf === this.cpfLimpo;
+    }
+  }, {
+    key: "isSequencia",
+    value: function isSequencia() {
+      var sequencia = this.cpfLimpo[0].repeat(11);
+      return sequencia === this.cpfLimpo;
+    }
+  }], [{
+    key: "criaDigito",
+    value: function criaDigito(cpfParcial) {
+      var cpfArray = Array.from(cpfParcial);
+      var contagemRegressiva = cpfArray.length + 1;
+      var total = cpfArray.reduce(function (ac, val) {
+        ac += contagemRegressiva * Number(val);
+        contagemRegressiva--;
+        return ac;
+      }, 0);
+      var digito = 11 - total % 11;
+      return digito > 9 ? "0" : String(digito);
+    }
+  }]);
+  return ValidaCPF;
+}();
 
 
 /***/ })
@@ -617,12 +706,20 @@ var __webpack_exports__ = {};
   !*** ./src/main.js ***!
   \*********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
-/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _modulo1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulo1 */ "./src/modulo1.js");
+/* harmony import */ var _modules_GeraCPF__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/GeraCPF */ "./src/modules/GeraCPF.js");
+/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
+/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_assets_css_style_css__WEBPACK_IMPORTED_MODULE_1__);
 
 
-console.log(_modulo1__WEBPACK_IMPORTED_MODULE_1__["default"]);
+function gerar() {
+  var resultado = document.querySelector('.cpf-gerado');
+  var btn = document.querySelector('.btn');
+  btn.addEventListener('click', function () {
+    var cpfNovo = new _modules_GeraCPF__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    resultado.innerHTML = cpfNovo.geraNovoCpf();
+  });
+}
+gerar();
 })();
 
 /******/ })()
