@@ -2,17 +2,11 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send(` 
-    <form action="/" method="POST">
-    nome: <input type="text" name="nome"></input>
-    <button> Enviar formulario</button>
-    </form>
-    `);
+  res.send("Página inicial");
 });
 
 app.post("/", (req, res) => {
-  res.send("Recebi o form");
-  console.log("Teste atualização");
+  res.send("Dados recebidos");
 });
 
 app.listen(3000, () => {
