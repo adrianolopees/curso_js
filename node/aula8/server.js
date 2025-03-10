@@ -9,13 +9,10 @@ app.get("/", (req, res) => {
     </form>
     `);
 });
+
 app.post("/", (req, res) => {
   res.send("Recebi o form");
   console.log("Teste atualização");
-});
-
-app.get("/contatos", (req, res) => {
-  res.send("Obrigao por entrar em contato");
 });
 
 app.listen(3000, () => {
