@@ -1,12 +1,16 @@
+const HomeModel = require("../models/HomeModel");
+HomeModel.create({
+  titulo: "Outra coisa",
+  descricao: "Outra descrição",
+})
+  .then((dados) => console.log(dados))
+  .catch((e) => console.log(e));
+
 exports.paginaInicial = (req, res, next) => {
-  console.log("respondi o cliente");
   res.render("index");
-  console.log(
-    `'paginaInicial' Olha onde eu tneho acesso ao req.session.nome ${req.session.nome}`
-  );
   next();
 };
 
 exports.trataPost = (req, res) => {
-  res.send("Ei, sou sua nova rota de POST.");
+  res.send(req.body);
 };
