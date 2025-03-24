@@ -21,7 +21,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "helmet": "^4.6.0",
-    "mongoose": "^5.12.1",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.12.2",
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
